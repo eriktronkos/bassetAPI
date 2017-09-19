@@ -142,6 +142,9 @@ exports.posicao_ativo = function(req, res) {
             res.send({ erro: err.message});
             return;
         }
+        if (!atv){
+            res.send({ erro: 'Ativo não encontrado'});
+        }
         Ordem.find({fk_id_ativo: atv._id}, function(err, ordem) {
         if (err)
             res.send({erro: err.message});
